@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from django.urls import reverse_lazy
 
@@ -48,7 +49,7 @@ ROOT_URLCONF = 'Metaverso9.urls'
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates'],
+        "DIRS": [os.path.join(os.path.dirname(BASE_DIR), 'templates')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -94,13 +95,11 @@ USE_I18N = True
 USE_TZ = True
 #-----------------------------------------------------------------------------------
 STATIC_URL = "static/"
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+STATICFILES_DIRS = [os.path.join(os.path.dirname(BASE_DIR), 'static')]
 STATIC_ROOT      = BASE_DIR / "staticfiles"
 #-----------------------------------------------------------------------------------
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR /"media"
+MEDIA_ROOT = [os.path.join(os.path.dirname(BASE_DIR), 'media')]
 #-----------------------------------------------------------------------------------
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #-----------------------------------------------------------------------------------

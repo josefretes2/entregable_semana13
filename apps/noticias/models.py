@@ -26,3 +26,7 @@ class Noticias(models.Model):
 
     class Meta:
         ordering = ('-published',)
+
+    def delete (self, using= None, keep_patrents= False):
+        self.imagen.delete(self.imagen.name)
+        super().delete()
